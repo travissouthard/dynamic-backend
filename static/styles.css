@@ -1,0 +1,429 @@
+/* @font-face {
+    font-family: 'kghappy-full';
+    src: url('./assets/font/KGHAPPY.ttf')  format('truetype');
+}
+@font-face {
+    font-family: 'kghappy-solid';
+    src: url('./assets/font/KGHAPPYSolid.ttf')  format('truetype');
+} */
+
+:root {
+    --red: #852320;
+    --light-red: #D4534E;
+    --light-blue: #3B92D9;
+    --blue: #215D8F;
+}
+
+html {
+    background-color: var(--blue);
+}
+
+body {
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+}
+
+main {
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    margin: 0;
+    padding: 8px;
+    font-weight: normal;
+}
+
+main h2 {
+    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+    background-color: var(--red);
+    color: white;
+}
+
+img {
+    width: 80%;
+    display: inline-block;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    margin: 0 auto;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+article {
+    text-align: justify;
+    padding: 20px 10px;
+}
+
+article a {
+    color: var(--blue);
+}
+
+header, nav, footer {
+    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+    background-color: var(--blue);
+    color: white;
+}
+
+header {
+    padding: 24px 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+header h1 {
+    font-family: 'kghappy-full', Arial, Helvetica, sans-serif;
+    font-size: 64px;
+}
+
+header p {
+    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+header img {
+    margin: 0 auto;
+    width: 25%;
+    border-radius: 50%;
+}
+
+nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    text-align: center;
+    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+}
+
+footer {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+footer ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+footer section {
+   align-self: end;
+}
+
+nav li {
+    background-color: var(--light-blue);
+    padding: 8px 16px;
+    flex-grow: 1;
+    font-weight: 100;
+}
+
+nav a:hover, footer a:hover {
+    text-decoration: none;
+    font-family: 'kghappy-full', Arial, Helvetica, sans-serif;
+}
+
+blockquote, details p {
+    border-left: 4px solid var(--blue);
+    padding-left: 8px;
+}
+
+pre {
+    margin: none;
+    border: 1px solid var(--blue);
+    padding: 8px 4px;
+    overflow-x: scroll;
+}
+
+code {
+    color: var(--red)
+}
+
+summary {
+    margin-bottom: 8px;
+}
+
+.list-view {
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+.detail-view {
+    padding: 0 24px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.blog-post {
+    padding: 0;
+}
+
+.blog-post h3 {
+    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+}
+
+.blog-post img {
+    width: 100%;
+}
+
+.blog-post li {
+    list-style: disc;
+    margin-left: 1em;
+}
+
+.blog-nav {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.blog-nav a {
+    text-align: center;
+    color: black;
+    width: 25%;
+}
+
+.blog-nav a:hover {
+    text-decoration: none;
+}
+
+.blog-nav li {
+    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    width: 25%;
+}
+
+.blog-nav li:hover {
+    font-family: 'kghappy-full', Arial, Helvetica, sans-serif;
+}
+
+.image-desc {
+    font-size: 0.8em;
+}
+
+.project-card {
+    padding: 2.5%;
+    width: 95%;
+}
+
+.project-card h3 {
+    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+    height: 60px;
+}
+
+.project-card p {
+    margin: 8px 0 0 0;
+    color: black;
+    text-align: justify;
+}
+
+.project-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.resume-card {
+    width: 95%;
+    padding: 0 8px;
+}
+
+.resume-card h3 {
+    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.resume-card p {
+    margin: 0;
+    padding: 8px 8px 8px 32px;
+}
+
+.skills {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    padding-bottom: 8px;
+}
+
+.skills h3 {
+    text-align: left;
+}
+
+.webring {
+    border: 1px solid var(--blue);
+    border-radius: 4px;
+    margin: 8px;
+    padding: 4px;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.webring p {
+    text-align: center;
+}
+
+.topic {
+    color: white;
+    background-color: var(--light-blue);
+    padding: 4px;
+    border-radius: 4px;
+    line-height: 2em;
+}
+
+.h-card {
+    display: flex;
+    align-items: end;
+    align-self: end;
+}
+
+.h-card img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.h-card p {
+    margin: 0;
+    padding-right: 4px;
+}
+
+#about {
+    max-width: 632px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+#about ul li {
+    padding-left: 2em;
+}
+
+#resume {
+    margin-bottom: 8px;
+}
+
+#print-resume {
+    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+    color: black;
+    text-align: center;
+    width: 100%;
+}
+
+#print-resume:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 344px) {
+    footer ul:last-child {
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid white;
+        text-align: left;
+    }
+}
+
+@media (min-width: 600px) {
+    .project-card {
+        width: 45%;
+    }
+
+    .feature {
+        position: relative;
+        width: 95%;
+        height: 35vh;
+    }
+
+    .feature h3, .feature p {
+        display: inline-block;
+        position: absolute;
+        width: 45%;
+        right: 2.5vw;
+        padding: 8px;
+    }
+
+    .feature h3 {
+        text-align: left;
+    }
+
+    .feature p {
+        top: 60px;
+    }
+
+    .feature a {
+        display: inline-block;
+        width: 50%;
+        height: 100%;
+    }
+
+    .feature a img {
+        object-position: center;
+        height: 100%;
+        max-width: 600px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .project-card {
+        width: 28.33333%;
+    }
+
+    .feature {
+        width: 95%;
+    }
+
+    .feature p {
+        top: 72px;
+    }
+
+    .resume-card {
+        width: 45%;
+    }
+
+    .webring {
+        max-width: 250px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .project-card {
+        width: 20%;
+    }
+
+    .feature {
+        width: 75%;
+        margin: 0 auto;
+        padding-bottom: 0;
+    }
+}
+
+@media (max-width: 720px) {
+    header h1 {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 320px) {
+    header h1 {
+        font-size: 32px;
+    }
+}
