@@ -1,11 +1,11 @@
-/* @font-face {
+@font-face {
     font-family: 'kghappy-full';
-    src: url('./assets/font/KGHAPPY.ttf')  format('truetype');
+    src: url('/static/font/KGHAPPY.ttf')  format('truetype');
 }
 @font-face {
     font-family: 'kghappy-solid';
-    src: url('./assets/font/KGHAPPYSolid.ttf')  format('truetype');
-} */
+    src: url('/static/font/KGHAPPYSolid.ttf')  format('truetype');
+}
 
 :root {
     --red: #852320;
