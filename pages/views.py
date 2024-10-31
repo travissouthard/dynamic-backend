@@ -14,17 +14,17 @@ def about_view(request):
     context = {"name": "About"}
     return HttpResponse(template.render(context, request))
 
-def projects_view(request):
+def project_list_view(request):
     template = loader.get_template("projects.html")
     context = {"name": "Projects"}
     return HttpResponse(template.render(context, request))
 
-def art_view(request):
+def art_list_view(request):
     template = loader.get_template("art.html")
     context = {"name": "Art"}
     return HttpResponse(template.render(context, request))
 
-def blog_view(request):
+def blog_list_view(request):
     template = loader.get_template("blog.html")
     context = {"name": "Blog"}
     return HttpResponse(template.render(context, request))
