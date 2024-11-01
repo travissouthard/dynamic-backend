@@ -19,7 +19,16 @@ def general_view(request, name):
             return list_view(request, name)
         template = loader.get_template(f"{name}.html")
         page_name = name[0].upper() + name[1:]
-        context = {"name": page_name}
+        image_url = "/blog/travis-flowers.jpg"
+        context = {
+            "name": page_name,
+            "desc": "A page by Travis Southard",
+            "image": image_url,
+            "image_type": image_url.split(".")[-1],
+            "width": "600",
+            "height": "450",
+            "alt": "Travis in a field of flowers"
+            }
         return HttpResponse(template.render(context, request))
     except:
         return four_oh_four(request)

@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ name }} | Travis Southard</title>
     <meta property="og:title" content="{{ name }} | Travis Southard">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="">
-    <meta property="og:image:secure_url" content="">
-    <meta property="og:image:type" content="">
-    <meta property="og:image:width" content="">
-    <meta property="og:image:height" content="">
-    <meta property="og:image:alt" content="">
+    <meta property="og:description" content="{{ desc }}">
+    <meta property="og:image" content="{{ static }}{{image}}">
+    <meta property="og:image:secure_url" content="{{ static }}{{image}}">
+    <meta property="og:image:type" content="image/{{ image_type }}">
+    <meta property="og:image:width" content="{{ width }}">
+    <meta property="og:image:height" content="{{ height }}">
+    <meta property="og:image:alt" content="{{ alt }}">
     <meta name="author" content="Travis Southard">
     <meta name="robots" content="noai, noimageai">
     <link href="{% static '/styles.css' %}" rel="stylesheet" type="text/css">
