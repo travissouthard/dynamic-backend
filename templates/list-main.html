@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>This is a list page</h3>
-{% for post in post_list %}
-<p>{{ post }}</p>
-{% endfor %}
+<main>
+    <h2>{{ name }}</h2>
+    <div class="list-view">
+        {% for post in post_list %}
+        <article class="project-card">
+            <a href="/{{ post.post_type }}/{{ post.slug }}">
+                <h3>{{ post.title }}</h3>
+                <img src="{{ media_url }}{{ post.image }}" alt="{{post.alt_text}}">
+            </a>
+            {{ post.description|safe }}
+        </article>
+        {% endfor %}
+    </div>
+</main>
 {% endblock content %}

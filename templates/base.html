@@ -44,13 +44,8 @@
             <li><a href="/about">About</a></li>
         </ul>
     </nav>
-    <main>
-        <h2>{{ name }}</h2>
-        <div class="index">
-            {% block content %}
-            {% endblock %}
-        </div>
-    </main>
+    {% block content %}
+    {% endblock %}
     <footer>
         <ul>
             <li><a href="/">Home</a></li>

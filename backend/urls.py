@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
+from django.conf.urls.static import static
+from .settings import MEDIA_ROOT, MEDIA_URL
 from pages.views import home_view, rss_view, general_view, post_view, redirect_old_html_links
 
 urlpatterns = [
@@ -25,4 +27,4 @@ urlpatterns = [
     re_path(r"^rss(.xml)?$", rss_view, name="rss"),
     path("<str:post_type>/<str:slug>", post_view, name="post"),
     path("<str:name>", general_view, name="general"),
-]
+] + static(MEDIA_URL, document_root=MEDIA_ROOT)
