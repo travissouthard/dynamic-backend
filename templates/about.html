@@ -2,39 +2,42 @@
 {% load static %}
 
 {% block content %}
-<article id="about">
-    <img src=" {% static '/images/blog/travis-flowers.jpg' %}"
-        alt="Travis and Ruby standing in front of a castle in County Kerry, Ireland on their honeymoon bike tour"
-        style="width: 100%; height: 200px; object-fit: cover;">
-    <p>
-        My name is Travis, and I am a software engineer living in Philadelphia with my spouse, <a
-            href="https://spokesandstitches.com/" target="_blank">Ruby</a>, and our two cats, Topaz and Basil. I
-        am interested in gardening, bike touring, and solarpunk living.
-    </p>
-    <p>
-        I am currently working as a Developer & Data Analyst in the Digital Innovation Lab at <a
-            href="https://clsphila.org/" target="_blank">Community Legal Services of Philadelphia</a>. I have
-        previously worked at <a href="https://www.element84.com/" target="_blank">Element 84</a>, <a
-            href="https://www.azavea.com/" target="_blank">Azavea</a>, and <a href="https://www.urality.com/"
-            target="_blank">Urality</a>.</p>
-    <p>
-        I am actively volunteering as one of the co-directors of <a href="https://codeforphilly.org/"
-            target="_blank">Code for Philly</a>. I previously served as the tech lead for the Expungement
-        Petition Generator benefitting <a href="https://www.plsephilly.org/" target="_blank">Philadelphia
-            Lawyers for Social Equity</a>, and helped put together a <a
-            href="https://codeforphilly.org/projects/third_places_project-launchpad_2023" target="_blank">third
-            places finder</a> as part of Code for Philly's Launchpad 2023.
-    </p>
-    <p>
-        Before transitioning into working in tech, I spent about 5 years working in the bicycle industry as a
-        mechanic and bike tour organizer. I am also an Americorps alum who served in City Year Philadelphia. I
-        have ridden two cross-country bike tours with <a href="https://bikeandbuild.org/" target="_blank">Bike &
-            Build</a>, and another on the full <a href="https://www.greenway.org/" target="_blank">East Coast
-            Greenway</a> with <a href="https://www.instagram.com/explore/tags/ridealongecg/" target="_blank">my
-            best friend.</a>
-    </p>
-    <img src=" {% static '/images/about2.jpg' %}"
-        alt="Travis and Ruby standing in front of a castle in County Kerry, Ireland on their honeymoon bike tour"
-        style="width: 100%; height: 200px; object-fit: cover;">
-</article>
+<main>
+    <h2>{{ name }}</h2>
+    <article id="about">
+        <img src=" {% static '/images/blog/travis-flowers.jpg' %}"
+            alt="Travis and Ruby standing in front of a castle in County Kerry, Ireland on their honeymoon bike tour"
+            style="width: 100%; height: 200px; object-fit: cover;">
+        <p>
+            My name is Travis, and I am a software engineer living in Philadelphia with my spouse, <a
+                href="https://spokesandstitches.com/" target="_blank">Ruby</a>, and our two cats, Topaz and Basil. I
+            am interested in gardening, bike touring, and solarpunk living.
+        </p>
+        <p>
+            I am currently working as a Developer & Data Analyst in the Digital Innovation Lab at <a
+                href="https://clsphila.org/" target="_blank">Community Legal Services of Philadelphia</a>. I have
+            previously worked at <a href="https://www.element84.com/" target="_blank">Element 84</a>, <a
+                href="https://www.azavea.com/" target="_blank">Azavea</a>, and <a href="https://www.urality.com/"
+                target="_blank">Urality</a>.</p>
+        <p>
+            I am actively volunteering as one of the co-directors of <a href="https://codeforphilly.org/"
+                target="_blank">Code for Philly</a>. I previously served as the tech lead for the Expungement
+            Petition Generator benefitting <a href="https://www.plsephilly.org/" target="_blank">Philadelphia
+                Lawyers for Social Equity</a>, and helped put together a <a
+                href="https://codeforphilly.org/projects/third_places_project-launchpad_2023" target="_blank">third
+                places finder</a> as part of Code for Philly's Launchpad 2023.
+        </p>
+        <p>
+            Before transitioning into working in tech, I spent about 5 years working in the bicycle industry as a
+            mechanic and bike tour organizer. I am also an Americorps alum who served in City Year Philadelphia. I
+            have ridden two cross-country bike tours with <a href="https://bikeandbuild.org/" target="_blank">Bike &
+                Build</a>, and another on the full <a href="https://www.greenway.org/" target="_blank">East Coast
+                Greenway</a> with <a href="https://www.instagram.com/explore/tags/ridealongecg/" target="_blank">my
+                best friend.</a>
+        </p>
+        <img src=" {% static '/images/about2.jpg' %}"
+            alt="Travis and Ruby standing in front of a castle in County Kerry, Ireland on their honeymoon bike tour"
+            style="width: 100%; height: 200px; object-fit: cover;">
+    </article>
+</main>
 {% endblock content %}
