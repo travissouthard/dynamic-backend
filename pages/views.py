@@ -1,5 +1,8 @@
+import re
+from datetime import datetime
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.contrib.syndication.views import Feed
 
 from backend.settings import MEDIA_URL
 from .models import Art, Blog, Project
@@ -39,8 +42,7 @@ def general_view(request, name):
 def home_view(request):
     template = loader.get_template("list-main.html")
 
-    posts = [a for a in Art.objects.all()] + [b for b in Blog.objects.all()] + [p for p in Project.objects.all()]
-    posts = sorted(posts, key = lambda x: x.published, reverse=True)
+    posts = Art.objects.all().union(Blog.objects.all(), Project.objects.all()).order_by("-published")
 
     context = {"name": "Home", "post_list": posts, "media_url": MEDIA_URL}
     return HttpResponse(template.render(context, request))
@@ -72,9 +74,53 @@ def post_view(request, post_type, slug):
     context = {"name": post.title, "post": post, "media_url": MEDIA_URL}
     return HttpResponse(template.render(context, request))
 
-def rss_view(request, _):
-    template = loader.get_template("rss.xml")
-    posts = [a for a in Art.objects.all()] + [b for b in Blog.objects.all()] + [p for p in Project.objects.all()]
-    posts = sorted(posts, key = lambda x: x.published, reverse=True)
-    context = {"post_list": posts}
-    return HttpResponse(template.render(context, request))
+class RSSFeed(Feed):
+    title="Travis Southard Blog"
+    link="/rss"
+    description="Travis Southard is a software engineer, cyclist, and artist living in Philadelphia, PA"
+    language="en"
+    author_name="Travis Southard"
+    author_email="hello@travissouthard.com"
+    author_link="https://travissouthard.com"
+    
+    def items(self):
+        posts = Art.objects.all().union(Blog.objects.all(), Project.objects.all()).order_by("-published")
+        return posts
+    
+    def item_title(self, item):
+        return item.title
+    
+    def item_description(self, item):
+        htmlEntities = {
+            "amp": "&",
+            "quot": "\"",
+            "apos": "'",
+            "lt": "<",
+            "gt": ">",
+        }
+        desc_w_fixed_links = re.sub(r"((img\s?(\n\s*)?src)|(a\s?(\n\s*)?href))=", f"\1=\"{self.author_link}", item.description)
+        desc = f"<img src='{ MEDIA_URL }{ item.image }' alt='{ item.alt_text }'>{ desc_w_fixed_links }"
+        for entity_name, symbol in htmlEntities.items():
+            desc = re.sub(symbol, f"&{entity_name};", desc)
+        return desc
+    
+    def item_link(self, item):
+        return f"{self.author_link}/{ item.post_type }/{ item.slug }"
+    
+    def item_author_name(self):
+        return self.author_name
+    
+    def item_author_email(self):
+        return self.author_email
+    
+    def item_author_link(self):
+        return self.author_link
+    
+    def _get_datetime_from_date(self, d):
+        return datetime(year=d.year, month=d.month, day=d.day)
+    
+    def item_pubdate(self, item):
+        return self._get_datetime_from_date(item.published)
+    
+    def item_updateddate(self, item):
+        return self._get_datetime_from_date(item.last_updated)
