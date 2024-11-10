@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ name }} | Travis Southard</title>
     <meta property="og:title" content="{{ name }} | Travis Southard">
-    <meta property="og:description" content="{{ desc }}">
+    <meta property="og:description" content="{{ desc|striptags|truncatechars:250 }}">
     <meta property="og:image" content="{{ static }}{{image}}">
     <meta property="og:image:secure_url" content="{{ static }}{{image}}">
     <meta property="og:image:type" content="image/{{ image_type }}">

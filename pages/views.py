@@ -45,7 +45,7 @@ def general_view(request, name):
         
         context = CONTEXT.copy()
         context["name"] = _capitalize(name)
-        context["desc"] = f"Latest {name} by Travis Southard"
+        context["desc"] = f"{name} | Travis Southard"
         return HttpResponse(template.render(context, request))
     except:
         return four_oh_four(request)
@@ -73,7 +73,7 @@ def list_view(request, name):
     context = CONTEXT.copy()
     context["name"] = _capitalize(name)
     context["post_list"] = posts
-    context["desc"] = posts[0].description
+    context["desc"] = f"Newest {name} by Travis Southard"
     if posts[0].image is not None:
         context["image"] = posts[0].image
         context["width"] = posts[0].image.width
