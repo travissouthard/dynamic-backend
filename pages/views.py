@@ -24,7 +24,7 @@ def _capitalize(s):
 def four_oh_four(request):
     template = loader.get_template("fourohfour.html")
 
-    context = CONTEXT
+    context = CONTEXT.copy()
     context["name"] = "404"
     context["desc"] = "Oops! We couldn't find that!"
 
@@ -43,7 +43,7 @@ def general_view(request, name):
             return list_view(request, name)
         template = loader.get_template(f"{name}.html")
         
-        context = CONTEXT
+        context = CONTEXT.copy()
         context["name"] = _capitalize(name)
         context["desc"] = f"Latest {name} by Travis Southard"
         return HttpResponse(template.render(context, request))
@@ -55,7 +55,7 @@ def home_view(request):
 
     posts = Art.objects.all().union(Blog.objects.all(), Project.objects.all()).order_by("-published")
 
-    context = CONTEXT
+    context = CONTEXT.copy()
     context["post_list"] = posts
     context["desc"] = "Travis Southard is a queer Philadelphian developer and artist."
 
@@ -70,7 +70,7 @@ def list_view(request, name):
     template = loader.get_template("list-main.html")
     posts = models[name].objects.all().order_by("-published")
 
-    context = CONTEXT
+    context = CONTEXT.copy()
     context["name"] = _capitalize(name)
     context["post_list"] = posts
     context["desc"] = posts[0].description
@@ -97,7 +97,7 @@ def post_view(request, post_type, slug):
     prev_slug = slugs[i - 1] if i > 0 else None
     next_slug = slugs[i + 1] if i + 1 < len(slugs) else None
 
-    context = CONTEXT
+    context = CONTEXT.copy()
     context["name"] = post.title
     context["post"] = post
     context["desc"] = post.description
