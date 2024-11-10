@@ -23,9 +23,10 @@ def _capitalize(s):
 
 def four_oh_four(request):
     template = loader.get_template("fourohfour.html")
-    
+
     context = CONTEXT
     context["name"] = "404"
+    context["desc"] = "Oops! We couldn't find that!"
 
     response = HttpResponse(template.render(context, request))
     response.status_code = 404
@@ -44,6 +45,7 @@ def general_view(request, name):
         
         context = CONTEXT
         context["name"] = _capitalize(name)
+        context["desc"] = f"Latest {name} by Travis Southard"
         return HttpResponse(template.render(context, request))
     except:
         return four_oh_four(request)
@@ -55,6 +57,7 @@ def home_view(request):
 
     context = CONTEXT
     context["post_list"] = posts
+    context["desc"] = "Travis Southard is a queer Philadelphian developer and artist."
 
     return HttpResponse(template.render(context, request))
 
@@ -65,10 +68,16 @@ def list_view(request, name):
         "projects": Project
     }
     template = loader.get_template("list-main.html")
-    posts = [x for x in models[name].objects.all()]
+    posts = [x for x in models[name].objects.all().order_by("-published")]
     context = CONTEXT
     context["name"] = _capitalize(name)
     context["post_list"] = posts
+    context["desc"] = posts[0].description
+    if posts[0].image is not None:
+        context["image"] = posts[0].image
+        context["width"] = posts[0].image.width
+        context["height"] = posts[0].image.height
+        context["alt"] = posts[0].alt_text
     return HttpResponse(template.render(context, request))
 
 def post_view(request, post_type, slug):
@@ -82,11 +91,24 @@ def post_view(request, post_type, slug):
     template = loader.get_template("post-main.html")
 
     post = models[post_type].objects.get(slug=slug)
-    # Find good way to get prev and next posts
+    slugs = [p.slug for p in models[post_type].objects.all()]
+    i = slugs.index(post.slug)
+    prev_slug = slugs[i - 1] if i > 0 else None
+    next_slug = slugs[i + 1] if i + 1 < len(slugs) else None
 
     context = CONTEXT
     context["name"] = post.title
     context["post"] = post
+    context["desc"] = post.description
+    context["first_slug"] = slugs[0]
+    context["prev_slug"] = prev_slug
+    context["next_slug"] = next_slug
+    context["last_slug"] = slugs[-1]
+    if post.image is not None:
+        context["image"] = post.image
+        context["width"] = post.image.width
+        context["height"] = post.image.height
+        context["alt"] = post.alt_text
 
     return HttpResponse(template.render(context, request))
 
