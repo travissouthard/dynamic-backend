@@ -1,4 +1,4 @@
-import re
+import string
 from django.db import models
 from django.utils import timezone
 
@@ -16,9 +16,8 @@ class Post(models.Model):
         abstract = True
 
     def save(self, *args, **kwargs):
-        slug = re.sub(r"[.,\/#!$%\^&\*;:{}=_`~()\?]", "", self.title)
-        slug = self.title.lower().split(" ")
-        self.slug = "-".join(slug)
+        slug = "-".join([word.lower().strip(string.punctuation) for word in self.title.split(" ")])
+        self.slug = slug
         super(Post, self).save(*args, **kwargs)
 
 class Art(Post):
