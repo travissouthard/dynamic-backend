@@ -4,6 +4,7 @@
 <main>
     <h2>{{ post.title }}</h2>
     <div class="detail-view">
+        {% include "blog-nav.html" %}
         <article class="blog-post">
             <h5>Last updated: {{post.last_updated}} | <a
                     href="https://travissouthard.com/{{ post.post_type }}/{{ post.slug }}">Permalink</a> | <a
@@ -20,6 +21,7 @@
                 </em>
             </p>
         </article>
+        {% include "blog-nav.html" %}
     </div>
 </main>
 {% endblock content %}

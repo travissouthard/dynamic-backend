@@ -1,0 +1,26 @@
+<ul class="blog-nav">
+    {% if prev_slug %}
+    <li>
+        <a href="{{ first_slug }}">&lt;&lt;</a>
+    </li>
+
+    <li>
+        <a href="{{ prev_slug }}">&lt;</a>
+    </li>
+    {% else %}
+    <li></li>
+    <li></li>
+    {% endif %}
+    {% if next_slug %}
+    <li>
+        <a href="{{ next_slug }}">&gt;</a>
+    </li>
+
+    <li>
+        <a href="{{ last_slug }}">&gt;&gt;</a>
+    </li>
+    {% else %}
+    <li></li>
+    <li></li>
+    {% endif %}
+</ul>

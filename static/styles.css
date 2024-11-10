@@ -199,7 +199,6 @@ summary {
 }
 
 .blog-nav a {
-    text-align: center;
     color: black;
     width: 25%;
 }
@@ -209,6 +208,7 @@ summary {
 }
 
 .blog-nav li {
+    text-align: center;
     font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
     font-size: 32px;
     width: 25%;
