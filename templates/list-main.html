@@ -10,7 +10,8 @@
                 <h3>{{ post.title }}</h3>
                 <img src="{{ media_url }}{{ post.image }}" alt="{{post.alt_text}}">
             </a>
-            {{ post.description|safe }}
+            <p>{{ post.description|striptags|truncatechars:100 }} <a href='/{post.post_type}/{post.slug}'>Read more</a>
+            </p>
         </article>
         {% endfor %}
     </div>

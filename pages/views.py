@@ -68,7 +68,8 @@ def list_view(request, name):
         "projects": Project
     }
     template = loader.get_template("list-main.html")
-    posts = [x for x in models[name].objects.all().order_by("-published")]
+    posts = models[name].objects.all().order_by("-published")
+
     context = CONTEXT
     context["name"] = _capitalize(name)
     context["post_list"] = posts
