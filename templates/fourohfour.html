@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Oops! We can't find that.</h3>
+<main>
+    <h2>{{ name }}</h2>
+    <div class="detail-view">
+        <article class="blog-post">
+            <h3>Oops! We can't find that.</h3>
+            <p style="text-align: center"><a href="/">Go back home</a></p>
+        </article>
+    </div>
+</main>
 {% endblock content %}
