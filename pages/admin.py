@@ -1,15 +1,33 @@
 from django.contrib import admin
 from .models import Art, Blog, Project, ResumeEntry, Topic, BlogRollEntry
 
-# Example for custom Admins
-# class AuthorAdmin(admin.ModelAdmin):
-#     pass
+class ArtAdmin(admin.ModelAdmin):
+    model = Art
+    list_display = ["title"]
+admin.site.register(Art, ArtAdmin)
 
-# admin.site.register(Author, AuthorAdmin)
+class BlogAdmin(admin.ModelAdmin):
+    model = Blog
+    list_display = ["title"]
+admin.site.register(Blog, BlogAdmin)
 
-admin.site.register(Art)
-admin.site.register(Blog)
-admin.site.register(Project)
-admin.site.register(ResumeEntry)
-admin.site.register(Topic)
-admin.site.register(BlogRollEntry)
+class ProjectAdmin(admin.ModelAdmin):
+    model = Project
+    list_display = ["title"]
+admin.site.register(Project, ProjectAdmin)
+
+class ResumeEntryAdmin(admin.ModelAdmin):
+    model = ResumeEntry
+    list_display = ["title", "company"]
+admin.site.register(ResumeEntry, ResumeEntryAdmin)
+
+class TopicAdmin(admin.ModelAdmin):
+    model = Topic
+    list_display = ["name"]
+    list_display_links = ["name"]
+admin.site.register(Topic, TopicAdmin)
+
+class BlogRollEntryAdmin(admin.ModelAdmin):
+    model = BlogRollEntry
+    list_display = ["name"]
+admin.site.register(BlogRollEntry, BlogRollEntryAdmin)

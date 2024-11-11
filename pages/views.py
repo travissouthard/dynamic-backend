@@ -1,11 +1,12 @@
 import re
 from datetime import datetime
+from django.db.models import F
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.contrib.syndication.views import Feed
 
 from backend.settings import MEDIA_URL
-from .models import Art, Blog, Project
+from .models import Art, Blog, Project, BlogRollEntry, ResumeEntry
 
 CONTEXT = {
     "name": "Home",
@@ -36,15 +37,26 @@ def redirect_old_html_links(_, route):
     return HttpResponseRedirect(route)
 
 def general_view(request, name):
+    models = {
+        "webring": BlogRollEntry,
+        "resume": ResumeEntry,
+    }
     try:
         if name == "index":
             return HttpResponseRedirect("/")
         if name in ["art", "blog", "projects"]:
             return list_view(request, name)
         template = loader.get_template(f"{name}.html")
-        
+        posts = models[name].objects.all()
+
+        if name == "webring":
+            posts = models[name].objects.prefetch_related("topics").all()
+        if name == "resume":
+            posts = models[name].objects.all().order_by(F("end").asc(nulls_first=True))
+
         context = CONTEXT.copy()
         context["name"] = _capitalize(name)
+        context["post_list"] = posts
         context["desc"] = f"{name} | Travis Southard"
         return HttpResponse(template.render(context, request))
     except:
@@ -65,7 +77,7 @@ def list_view(request, name):
     models = {
         "art": Art,
         "blog": Blog,
-        "projects": Project
+        "projects": Project,
     }
     template = loader.get_template("list-main.html")
     posts = models[name].objects.all().order_by("-published")
@@ -73,7 +85,7 @@ def list_view(request, name):
     context = CONTEXT.copy()
     context["name"] = _capitalize(name)
     context["post_list"] = posts
-    context["desc"] = f"Newest {name} by Travis Southard"
+    context["desc"] = f"{name} by Travis Southard"
     if posts[0].image is not None:
         context["image"] = posts[0].image
         context["width"] = posts[0].image.width
