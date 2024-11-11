@@ -31,22 +31,17 @@
 </head>
 
 <body>
-    <header>
-        <h1>Travis Southard</h1>
-        <p>Philadelphian Software Engineer</p>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/art">Art</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/about">About</a></li>
-        </ul>
-    </nav>
-    {% block content %}
-    {% endblock %}
-    <footer>
+    <aside>
+        <div class="h-card">
+            <img class="u-photo" src="{% static '/images/profile.png' %}"
+                alt="A stylized white on blue photo of Travis' face made of squares of various size.">
+            <div>
+                <a class="u-url" rel="me" href="https://travissouthard.com">
+                    <p class="p-name">Travis Southard</p>
+                </a>
+                <p class="location"><span class="p-locality">Philadelphia</span>, <span class="p-region">PA</span></p>
+            </div>
+        </div>
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/projects">Projects</a></li>
@@ -58,17 +53,9 @@
             <li><a href="https://github.com/travissouthard" rel="me">GitHub</a></li>
             <li><a href="/resume">Resume</a></li>
         </ul>
-        <div class="h-card">
-            <div>
-                <a class="u-url" rel="me" href="https://travissouthard.com">
-                    <p class="p-name">Travis Southard</p>
-                </a>
-                <p><span class="p-locality">Philadelphia</span>, <span class="p-region">PA</span></p>
-            </div>
-            <img class="u-photo" src="{% static '/images/profile.png' %}"
-                alt="A stylized white on blue photo of Travis' face made of squares of various size.">
-        </div>
-    </footer>
+    </aside>
+    {% block content %}
+    {% endblock %}
 </body>
 
 </html>
