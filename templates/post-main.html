@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<main>
-    <h2>{{ post.title }}</h2>
+<main class="h-entry">
+    <h2 class="p-name">{{ post.title }}</h2>
     <div class="detail-view">
         {% include "blog-nav.html" %}
-        <article class="blog-post">
-            <h5>Last updated: {{post.last_updated}} | <a
+        <article class="e-content blog-post">
+            <h5><span class="dt-updated">Last updated: {{post.last_updated}}</span> | <a class="u-url u-uid"
                     href="https://travissouthard.com/{{ post.post_type }}/{{ post.slug }}">Permalink</a> | <a
                     href="https://travissouthard.com/rss.xml" target="_blank">RSS</a></h5>
-            <img src="{{ media_url }}{{ post.image }}" alt="{{ post.alt_text }}">
+            <img class="u-photo" src="{{ media_url }}{{ post.image }}" alt="{{ post.alt_text }}">
             <p class="image-desc"><em>{{ post.alt_text }}</em></p>
             {{ post.description|safe }}
             <p>

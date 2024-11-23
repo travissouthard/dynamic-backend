@@ -9,8 +9,8 @@ from backend.settings import MEDIA_URL
 from .models import Art, Blog, Project, BlogRollEntry, ResumeEntry
 
 CONTEXT = {
-    "name": "Home",
-    "desc": "A page by Travis Southard",
+    "name": "Recent Work",
+    "desc": "Travis Southard's most recent work",
     "image": "/blog/travis-flowers.jpg",
     "image_type": "jpg",
     "width": "600",
@@ -44,6 +44,8 @@ def general_view(request, name):
     try:
         if name == "index":
             return HttpResponseRedirect("/")
+        if name == "full-feed":
+            return home_view(request, is_full=True)
         if name in ["art", "blog", "projects"]:
             return list_view(request, name)
         template = loader.get_template(f"{name}.html")
@@ -68,13 +70,14 @@ def general_view(request, name):
     except:
         return four_oh_four(request)
 
-def home_view(request):
+def home_view(request, is_full=False):
     template = loader.get_template("list-main.html")
 
     posts = Art.objects.all().union(Blog.objects.all(), Project.objects.all()).order_by("-published")
 
     context = CONTEXT.copy()
     context["post_list"] = posts
+    context["is_full"] = is_full
     context["desc"] = "Travis Southard is a queer Philadelphian developer and artist."
 
     return HttpResponse(template.render(context, request))

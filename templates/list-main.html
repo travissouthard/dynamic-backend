@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<main>
-    <h2>{{ name }}</h2>
+<main class="h-feed">
+    <h2 class="p-name">{{ name }}</h2>
+    <a class="u-url u-uid" rel="alternate" type="application/mf2+html" href="http://travissouthard.com/full-feed"></a>
     <div class="list-view">
         {% for post in post_list %}
-        <article class="project-card">
-            <a href="/{{ post.post_type }}/{{ post.slug }}">
-                <h3>{{ post.title }}</h3>
+        <article class="h-entry project-card">
+            <a class="u-url" href="/{{ post.post_type }}/{{ post.slug }}">
+                <h3 class="p-name">{{ post.title }}</h3>
                 <img src="{{ media_url }}{{ post.image }}" alt="{{post.alt_text}}">
             </a>
-            <p>{{ post.description|striptags|truncatechars:100 }} <a href='/{{ post.post_type }}/{{ post.slug }}'>Read
+            {% if is_full == True %}
+            <p class="p-summary">{{ post.description|safe }}</p>
+            {% else %}
+            <p class="p-summary">{{ post.description|striptags|truncatechars:100 }} <a
+                    href='/{{ post.post_type }}/{{ post.slug }}'>Read
                     more</a>
             </p>
+            {% endif %}
         </article>
         {% endfor %}
     </div>
