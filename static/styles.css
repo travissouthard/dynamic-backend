@@ -278,6 +278,7 @@ summary {
     flex-flow: column wrap;
     align-items: end;
     align-self: end;
+    text-align: right;
     padding: 8px;
 }
 
@@ -371,6 +372,10 @@ summary {
         object-position: center;
         height: 100%;
         max-width: 600px;
+    }
+
+    .h-card {
+        text-align: left;
     }
 }
 
