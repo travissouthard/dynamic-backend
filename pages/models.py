@@ -37,12 +37,15 @@ class ResumeEntry(models.Model):
     company = models.CharField(max_length=64)
     co_link = models.URLField(null=True, blank=True)
     start = models.DateField()
-    end = models.DateField()
+    end = models.DateField(null=True, blank=True)
     location = models.CharField(max_length=32)
     description = models.TextField(null=True, blank=True)
 
 class Topic(models.Model):
     name = models.CharField(max_length=16, unique=True)
+
+    def __str__(self):
+        return self.name
 
 class BlogRollEntry(models.Model):
     name = models.CharField(max_length=100)

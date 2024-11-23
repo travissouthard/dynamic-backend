@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>This is the homepage</h3>
+<main>
+    <h2>{{ name }}</h2>
+    <div class="list-view">
+        {% for post in post_list %}
+        <article class="resume-card">
+            <h3>{{ post.title }}</h3>
+            <p>
+                {% if post.co_link %}
+                <a href="{{ post.co_link }}" target="_blank"><b>{{ post.company }}</b></a>
+                {% else %}
+                <b>{{ post.company }}</b>
+                {% endif %}
+                | {{ post.location }} | <em>{{ post.start }}-{% firstof post.end "Present" %}</em>
+            </p>
+            <p>{{ post.description }}</p>
+        </article>
+        {% endfor %}
+    </div>
+</main>
 {% endblock content %}
