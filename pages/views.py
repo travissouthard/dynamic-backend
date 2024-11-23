@@ -50,7 +50,13 @@ def general_view(request, name):
         posts = models[name].objects.all()
 
         if name == "webring":
-            posts = models[name].objects.prefetch_related("topics").all()
+            posts = []
+            post_objs = models[name].objects.prefetch_related("topics").all()
+            for post in post_objs:
+                posts.append({
+                    "name": post.name,
+                    "topics": [t.name for t in post.topics.all()]
+                })
         if name == "resume":
             posts = models[name].objects.all().order_by(F("end").asc(nulls_first=True))
 

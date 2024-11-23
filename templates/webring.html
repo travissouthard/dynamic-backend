@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>This is the homepage</h3>
+<main>
+    <h2>{{ name }}</h2>
+    <div class="list-view">
+        {% for post in post_list %}
+        <article class="webring">
+            <p><a href="{{ post.link }}" target="_blank">{{ post.name }}</a></p>
+            <p>
+                {% for topic in post.topics %}
+                <span class="topic">{{ topic }}</span>
+                {% endfor %}
+            </p>
+        </article>
+        {% endfor %}
+    </div>
+</main>
 {% endblock content %}
