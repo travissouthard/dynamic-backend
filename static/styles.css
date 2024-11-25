@@ -151,6 +151,14 @@ summary {
     text-align: center;
 }
 
+.list-full {
+    padding: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    text-align: center;
+}
+
 .detail-view {
     padding: 0 24px;
     max-width: 600px;
@@ -340,42 +348,22 @@ article.project-card:first-of-type {
         justify-content: flex-start;
     }
 
-    .project-card {
+    .list-view .project-card {
         width: 45%;
     }
 
-    article.project-card:first-of-type {
+    .list-view article.project-card:first-of-type {
         position: relative;
         width: 95%;
-        height: 35vh;
     }
 
-    article.project-card:first-of-type h3, article.project-card:first-of-type p {
-        display: inline-block;
-        position: absolute;
-        width: 45%;
-        right: 2.5vw;
+    .list-view article.project-card:first-of-type a {
+        float: left;
+    }
+
+    .list-view article.project-card:first-of-type p {
+        margin-top: 68px;
         padding: 8px;
-    }
-
-    article.project-card:first-of-type h3 {
-        text-align: center;
-    }
-
-    article.project-card:first-of-type p {
-        top: 60px;
-    }
-
-    article.project-card:first-of-type a {
-        display: inline-block;
-        width: 50%;
-        height: 100%;
-    }
-
-    article.project-card:first-of-type a img {
-        object-position: center;
-        height: 100%;
-        max-width: 600px;
     }
 
     .h-card {
@@ -384,16 +372,8 @@ article.project-card:first-of-type {
 }
 
 @media (min-width: 1000px) {
-    .project-card {
+    .list-view .project-card {
         width: 28.33333%;
-    }
-
-    article.project-card:first-of-type {
-        width: 95%;
-    }
-
-    article.project-card:first-of-type p {
-        top: 72px;
     }
 
     .resume-card {
@@ -406,13 +386,7 @@ article.project-card:first-of-type {
 }
 
 @media (min-width: 1400px) {
-    .project-card {
+    .list-view .project-card {
         width: 20%;
-    }
-
-    article.project-card:first-of-type {
-        width: 75%;
-        margin: 0 auto;
-        padding-bottom: 0;
     }
 }
