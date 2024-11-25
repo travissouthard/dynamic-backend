@@ -226,6 +226,10 @@ summary {
     object-position: top;
 }
 
+article.project-card:first-of-type {
+    flex-grow: 2;
+}
+
 .resume-card {
     width: 95%;
     padding: 0 8px;
@@ -340,13 +344,13 @@ summary {
         width: 45%;
     }
 
-    .feature {
+    article.project-card:first-of-type {
         position: relative;
         width: 95%;
         height: 35vh;
     }
 
-    .feature h3, .feature p {
+    article.project-card:first-of-type h3, article.project-card:first-of-type p {
         display: inline-block;
         position: absolute;
         width: 45%;
@@ -354,21 +358,21 @@ summary {
         padding: 8px;
     }
 
-    .feature h3 {
-        text-align: left;
+    article.project-card:first-of-type h3 {
+        text-align: center;
     }
 
-    .feature p {
+    article.project-card:first-of-type p {
         top: 60px;
     }
 
-    .feature a {
+    article.project-card:first-of-type a {
         display: inline-block;
         width: 50%;
         height: 100%;
     }
 
-    .feature a img {
+    article.project-card:first-of-type a img {
         object-position: center;
         height: 100%;
         max-width: 600px;
@@ -384,11 +388,11 @@ summary {
         width: 28.33333%;
     }
 
-    .feature {
+    article.project-card:first-of-type {
         width: 95%;
     }
 
-    .feature p {
+    article.project-card:first-of-type p {
         top: 72px;
     }
 
@@ -406,7 +410,7 @@ summary {
         width: 20%;
     }
 
-    .feature {
+    article.project-card:first-of-type {
         width: 75%;
         margin: 0 auto;
         padding-bottom: 0;
