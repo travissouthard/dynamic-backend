@@ -60,7 +60,7 @@ def general_view(request, name):
                     "topics": [t.name for t in post.topics.all()]
                 })
         if name == "resume":
-            posts = models[name].objects.all().order_by(F("end").asc(nulls_first=True))
+            posts = models[name].objects.all().order_by(F("start").desc(nulls_first=True))
 
         context = CONTEXT.copy()
         context["name"] = _capitalize(name)
