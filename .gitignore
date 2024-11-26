@@ -2,3 +2,5 @@
 
 /media/images/**
 db.sqlite3
+
+.env
