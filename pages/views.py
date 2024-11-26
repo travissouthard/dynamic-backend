@@ -103,36 +103,39 @@ def list_view(request, name):
     return HttpResponse(template.render(context, request))
 
 def post_view(request, post_type, slug):
-    models = {
-        "art": Art,
-        "blog": Blog,
-        "projects": Project
-    }
-    if post_type not in ["art", "blog", "projects"]:
+    try:
+        models = {
+            "art": Art,
+            "blog": Blog,
+            "projects": Project
+        }
+        if post_type not in ["art", "blog", "projects"]:
+            return four_oh_four(request)
+        template = loader.get_template("post-main.html")
+
+        post = models[post_type].objects.get(slug=slug)
+        slugs = [p.slug for p in models[post_type].objects.all()]
+        i = slugs.index(post.slug)
+        prev_slug = slugs[i - 1] if i > 0 else None
+        next_slug = slugs[i + 1] if i + 1 < len(slugs) else None
+
+        context = CONTEXT.copy()
+        context["name"] = post.title
+        context["post"] = post
+        context["desc"] = post.description
+        context["first_slug"] = slugs[0]
+        context["prev_slug"] = prev_slug
+        context["next_slug"] = next_slug
+        context["last_slug"] = slugs[-1]
+        if post.image is not None:
+            context["image"] = post.image
+            context["width"] = post.image.width
+            context["height"] = post.image.height
+            context["alt"] = post.alt_text
+
+        return HttpResponse(template.render(context, request))
+    except:
         return four_oh_four(request)
-    template = loader.get_template("post-main.html")
-
-    post = models[post_type].objects.get(slug=slug)
-    slugs = [p.slug for p in models[post_type].objects.all()]
-    i = slugs.index(post.slug)
-    prev_slug = slugs[i - 1] if i > 0 else None
-    next_slug = slugs[i + 1] if i + 1 < len(slugs) else None
-
-    context = CONTEXT.copy()
-    context["name"] = post.title
-    context["post"] = post
-    context["desc"] = post.description
-    context["first_slug"] = slugs[0]
-    context["prev_slug"] = prev_slug
-    context["next_slug"] = next_slug
-    context["last_slug"] = slugs[-1]
-    if post.image is not None:
-        context["image"] = post.image
-        context["width"] = post.image.width
-        context["height"] = post.image.height
-        context["alt"] = post.alt_text
-
-    return HttpResponse(template.render(context, request))
 
 class RSSFeed(Feed):
     title="Travis Southard Blog"
