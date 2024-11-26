@@ -1,6 +1,7 @@
 import string
 from django.db import models
 from django.utils import timezone
+from .helpers.posse import post_to_mastodon
 
 class Post(models.Model):
     title = models.CharField(max_length=64)
@@ -16,8 +17,10 @@ class Post(models.Model):
         abstract = True
 
     def save(self, *args, **kwargs):
-        slug = "-".join([word.lower().strip(string.punctuation) for word in self.title.split(" ")])
-        self.slug = slug
+        if not self.slug:
+            slug = "-".join([word.lower().strip(string.punctuation) for word in self.title.split(" ")])
+            self.slug = slug
+            post_to_mastodon(self)
         super(Post, self).save(*args, **kwargs)
 
 class Art(Post):
