@@ -357,13 +357,13 @@ article.project-card:first-of-type {
         width: 95%;
     }
 
-    .list-view article.project-card:first-of-type a {
+    .list-view article.project-card:first-of-type a.u-url {
         float: left;
     }
 
     .list-view article.project-card:first-of-type p {
         margin-top: 68px;
-        padding: 8px;
+        padding-top: 8px;
     }
 
     .h-card {
