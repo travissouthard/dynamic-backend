@@ -165,7 +165,9 @@ class RSSFeed(Feed):
         desc = f"<img src='{ MEDIA_URL }{ item.image }' alt='{ item.alt_text }'>{ desc_w_fixed_links }"
         for entity_name, symbol in htmlEntities.items():
             desc = re.sub(symbol, f"&{entity_name};", desc)
-        return desc
+        mapping = dict.fromkeys(range(32))
+        cleaned_desc = desc.translate(mapping)
+        return cleaned_desc
     
     def item_link(self, item):
         return f"{self.author_link}/{ item.post_type }/{ item.slug }"
