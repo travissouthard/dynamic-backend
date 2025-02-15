@@ -1,6 +1,8 @@
 **/__pycache__/
 
 /media/images/**
+/static/admin/**
+/static/staticfiles.json
 db.sqlite3
 
 .env

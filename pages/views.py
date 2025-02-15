@@ -22,12 +22,12 @@ CONTEXT = {
 def _capitalize(s):
     return s[0].upper() + s[1:]
 
-def four_oh_four(request):
+def four_oh_four(request, exception_message):
     template = loader.get_template("fourohfour.html")
 
     context = CONTEXT.copy()
     context["name"] = "404"
-    context["desc"] = "Oops! We couldn't find that!"
+    context["desc"] = f"Oops! We couldn't find that! Issue: {exception_message}"
 
     response = HttpResponse(template.render(context, request))
     response.status_code = 404
@@ -49,7 +49,7 @@ def general_view(request, name):
         if name in ["art", "blog", "projects"]:
             return list_view(request, name)
         template = loader.get_template(f"{name}.html")
-        posts = models[name].objects.all()
+        posts = models[name].objects.all() if name != "about" else []
 
         if name == "webring":
             posts = []
@@ -67,8 +67,8 @@ def general_view(request, name):
         context["post_list"] = posts
         context["desc"] = f"{name} | Travis Southard"
         return HttpResponse(template.render(context, request))
-    except:
-        return four_oh_four(request)
+    except Exception as e:
+        return four_oh_four(request, e)
 
 def home_view(request, is_full=False):
     template = loader.get_template("list-main.html")
@@ -83,24 +83,27 @@ def home_view(request, is_full=False):
     return HttpResponse(template.render(context, request))
 
 def list_view(request, name):
-    models = {
-        "art": Art,
-        "blog": Blog,
-        "projects": Project,
-    }
-    template = loader.get_template("list-main.html")
-    posts = models[name].objects.all().order_by("-published")
+    try:
+        models = {
+            "art": Art,
+            "blog": Blog,
+            "projects": Project,
+        }
+        template = loader.get_template("list-main.html")
+        posts = models[name].objects.all().order_by("-published")
 
-    context = CONTEXT.copy()
-    context["name"] = _capitalize(name)
-    context["post_list"] = posts
-    context["desc"] = f"{name} by Travis Southard"
-    if posts[0].image is not None:
-        context["image"] = posts[0].image
-        context["width"] = posts[0].image.width
-        context["height"] = posts[0].image.height
-        context["alt"] = posts[0].alt_text
-    return HttpResponse(template.render(context, request))
+        context = CONTEXT.copy()
+        context["name"] = _capitalize(name)
+        context["post_list"] = posts
+        context["desc"] = f"{name} by Travis Southard"
+        if posts[0].image is not None:
+            context["image"] = posts[0].image
+            context["width"] = posts[0].image.width
+            context["height"] = posts[0].image.height
+            context["alt"] = posts[0].alt_text
+        return HttpResponse(template.render(context, request))
+    except Exception as e:
+        return HttpResponse(content={e})
 
 def post_view(request, post_type, slug):
     try:
