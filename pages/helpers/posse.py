@@ -14,6 +14,6 @@ def post_to_mastodon(post):
     }
     post_type = types[post.post_type]
 
-    status = f"I just added a new {post_type} to my website!\n\n\"{post.title}\"\n\nCheck it out at: https://travissouthard/{post.post_type}/{post.slug}"
+    status = f"I just added a new {post_type} to my website!\n\n\"{post.title}\"\n\nCheck it out at: https://travissouthard.com/{post.post_type}/{post.slug}"
     
     post = mastodon.status_post(status=status)
