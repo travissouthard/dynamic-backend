@@ -21,10 +21,11 @@ class Post(models.Model):
         abstract = True
 
     def save(self, *args, **kwargs):
-        if not self.slug:
+        isNew = not self.slug
+        if isNew:
             slug = create_post_slug(self.title)
             self.slug = slug
-            post_to_mastodon(self)
+        post_to_mastodon(self, isNew)
         super(Post, self).save(*args, **kwargs)
 
 class Art(Post):
