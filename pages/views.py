@@ -48,6 +48,8 @@ def general_view(request, name):
             return home_view(request, is_full=True)
         if name in ["art", "blog", "project"]:
             return list_view(request, name)
+        if name == "projects":
+            return HttpResponseRedirect("/project")
         template = loader.get_template(f"{name}.html")
         posts = models[name].objects.all() if name != "about" else []
 
@@ -102,6 +104,8 @@ def list_view(request, name):
 
 def post_view(request, post_type, slug):
     try:
+        if post_type == "projects":
+            HttpResponseRedirect(f"/project/{slug}")
         models = {
             "art": Art,
             "blog": Blog,
