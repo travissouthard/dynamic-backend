@@ -46,7 +46,7 @@ def general_view(request, name):
             return HttpResponseRedirect("/")
         if name == "full-feed":
             return home_view(request, is_full=True)
-        if name in ["art", "blog", "projects"]:
+        if name in ["art", "blog", "project"]:
             return list_view(request, name)
         template = loader.get_template(f"{name}.html")
         posts = models[name].objects.all() if name != "about" else []
@@ -87,7 +87,7 @@ def list_view(request, name):
         models = {
             "art": Art,
             "blog": Blog,
-            "projects": Project,
+            "project": Project,
         }
         template = loader.get_template("list-main.html")
         posts = models[name].objects.all().order_by("-published")
@@ -96,11 +96,6 @@ def list_view(request, name):
         context["name"] = _capitalize(name)
         context["post_list"] = posts
         context["desc"] = f"{name} by Travis Southard"
-        if posts[0].image is not None:
-            context["image"] = posts[0].image
-            context["width"] = posts[0].image.width
-            context["height"] = posts[0].image.height
-            context["alt"] = posts[0].alt_text
         return HttpResponse(template.render(context, request))
     except Exception as e:
         return HttpResponse(content={e})
@@ -110,9 +105,9 @@ def post_view(request, post_type, slug):
         models = {
             "art": Art,
             "blog": Blog,
-            "projects": Project
+            "project": Project
         }
-        if post_type not in ["art", "blog", "projects"]:
+        if post_type not in ["art", "blog", "project"]:
             return four_oh_four(request)
         template = loader.get_template("post-main.html")
 
@@ -130,15 +125,10 @@ def post_view(request, post_type, slug):
         context["prev_slug"] = prev_slug
         context["next_slug"] = next_slug
         context["last_slug"] = slugs[-1]
-        if post.image is not None:
-            context["image"] = post.image
-            context["width"] = post.image.width
-            context["height"] = post.image.height
-            context["alt"] = post.alt_text
 
         return HttpResponse(template.render(context, request))
-    except:
-        return four_oh_four(request)
+    except Exception as e:
+        return four_oh_four(request, e)
 
 class RSSFeed(Feed):
     title="Travis Southard Blog"

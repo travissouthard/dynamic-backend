@@ -51,7 +51,7 @@ def create_post(model, item, path):
 
 def import_site_data(json_file, path):
     site_data = json.load(json_file)
-    keys = [("art", Art), ("blog", Blog), ("projects", Project), ("resume", ResumeEntry), ("webring", BlogRollEntry)]
+    keys = [("art", Art), ("blog", Blog), ("project", Project), ("resume", ResumeEntry), ("webring", BlogRollEntry)]
 
     for key, model in keys:
         for item in site_data[key]:

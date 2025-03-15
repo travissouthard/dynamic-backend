@@ -108,10 +108,10 @@ class Migration(migrations.Migration):
                 (
                     "image",
                     models.ImageField(
-                        blank=True, null=True, upload_to="images/projects/"
+                        blank=True, null=True, upload_to="images/project/"
                     ),
                 ),
-                ("post_type", models.CharField(default="projects", max_length=8)),
+                ("post_type", models.CharField(default="project", max_length=8)),
             ],
             options={
                 "abstract": False,

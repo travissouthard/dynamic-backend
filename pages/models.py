@@ -47,8 +47,8 @@ class Blog(Post):
         super(Blog, self).save(*args, **kwargs)
 
 class Project(Post):
-    image = models.ImageField(upload_to="images/projects/", null=True, blank=True)
-    post_type = models.CharField(max_length=8, default="projects")
+    image = models.ImageField(upload_to="images/project/", null=True, blank=True)
+    post_type = models.CharField(max_length=8, default="project")
 
     def save(self, *args, **kwargs):
         slug = self.slug if self.slug is not None else create_post_slug(self.title)
