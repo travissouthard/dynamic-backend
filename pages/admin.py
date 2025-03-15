@@ -3,17 +3,17 @@ from .models import Art, Blog, Project, ResumeEntry, Topic, BlogRollEntry
 
 class ArtAdmin(admin.ModelAdmin):
     model = Art
-    list_display = ["title"]
+    list_display = ["title", "image"]
 admin.site.register(Art, ArtAdmin)
 
 class BlogAdmin(admin.ModelAdmin):
     model = Blog
-    list_display = ["title"]
+    list_display = ["title", "image"]
 admin.site.register(Blog, BlogAdmin)
 
 class ProjectAdmin(admin.ModelAdmin):
     model = Project
-    list_display = ["title"]
+    list_display = ["title", "image"]
 admin.site.register(Project, ProjectAdmin)
 
 class ResumeEntryAdmin(admin.ModelAdmin):
