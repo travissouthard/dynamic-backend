@@ -13,14 +13,14 @@
             <article class="h-entry project-card">
                 <a class="u-url" href="/{{ post.post_type }}/{{ post.slug }}">
                     <h3 class="p-name">{{ post.title }}</h3>
-                    <img src="{{ media_url }}{{ post.image }}" alt="{{post.alt_text}}">
+                    <img src="{{ media_url }}{{ post.image|default:'images/art/headshot-32.png' }}"
+                        alt="{{post.alt_text|default:'A pixel art portrait of Travis'}}">
                 </a>
                 {% if is_full == True %}
                 <div class="p-summary e-content">{{ post.description|safe }}</div>
                 {% else %}
                 <p class="p-summary">{{ post.description|striptags|truncatechars:100 }} <a
-                        href='/{{ post.post_type }}/{{ post.slug }}'>Read
-                        more</a>
+                        href='/{{ post.post_type }}/{{ post.slug }}'>Read more</a>
                 </p>
                 {% endif %}
             </article>

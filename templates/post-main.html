@@ -6,18 +6,17 @@
     <div class="detail-view">
         {% include "blog-nav.html" %}
         <article class="e-content blog-post">
-            <h5><span class="dt-updated">Last updated: {{post.last_updated}}</span> | <a class="u-url u-uid"
+            <h5><span class="dt-updated">First published: {{post.published}}</span> | <a class="u-url u-uid"
                     href="https://travissouthard.com/{{ post.post_type }}/{{ post.slug }}">Permalink</a> | <a
                     href="https://travissouthard.com/rss.xml" target="_blank">RSS</a></h5>
+            {% if post.image is not None %}
             <img class="u-photo" src="{{ media_url }}{{ post.image }}" alt="{{ post.alt_text }}">
             <p class="image-desc"><em>{{ post.alt_text }}</em></p>
+            {% endif %}
             {{ post.description|safe }}
             <p>
                 <em>
                     Thank you for reading!
-                    <a href="https://ko-fi.com/travissouthard" target="_blank">
-                        Please consider supporting this blog.
-                    </a>
                 </em>
             </p>
         </article>
