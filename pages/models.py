@@ -12,6 +12,8 @@ class Post(models.Model):
     slug = models.CharField(max_length=64, null=True, blank=True, editable=False)
     site_link = models.URLField(max_length=2000, null=True, blank=True)
     code_link = models.URLField(max_length=2000, null=True, blank=True)
+    mastodon_link = models.URLField(max_length=2000, null=True, blank=True)
+    bluesky_link = models.URLField(max_length=2000, null=True, blank=True)
     description = models.TextField()
     alt_text = models.CharField(max_length=280, null=True, blank=True)
     published = models.DateField(default=timezone.now)
