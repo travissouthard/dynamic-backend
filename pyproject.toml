@@ -1,19 +1,26 @@
-[tool.poetry]
+[project]
 name = "dynamic-backend"
-version = "0.1.0"
+version = "0.1.1"
 description = "A dynamic indieweb and microformats2 backend for travissouthard.com"
-authors = ["travissouthard <tsouthard88@gmail.com>"]
 readme = "README.md"
+dependencies = [
+    "django>=5.1.2",
+    "pillow>=11.0.0",
+    "mastodon-py>=1.8.1",
+    "python-dotenv>=1.0.1",
+    "gunicorn>=23.0.0",
+    "whitenoise>=6.9.0",
+    "pysqlite3>=0.5.4",
+]
+
+[tool.poetry]
+packages = [
+    { include = "backend" },
+    { include = "pages" },
+]
 
 [tool.poetry.dependencies]
-python = "^3.12"
-django = "^5.1.2"
-pillow = "^11.0.0"
-mastodon-py = "^1.8.1"
-python-dotenv = "^1.0.1"
-gunicorn = "^23.0.0"
-whitenoise = "^6.9.0"
-
+python = ">3.10"
 
 [build-system]
 requires = ["poetry-core"]
