@@ -4,7 +4,7 @@ from pages.helpers.data_helper import import_site_data
 class Command(BaseCommand):
     help = """
         Imports data from a specified json file.
-        File must be a dict of lists named 'art', 'blog', 'project', 'webring', 'resume'
+        File must be a dict of lists named 'art', 'blog', 'project', 'blogroll', 'resume'
         Each of those lists should have a dict matching helpers.data_helper.py
     """
 

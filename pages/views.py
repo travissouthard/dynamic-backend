@@ -38,7 +38,7 @@ def redirect_old_html_links(_, route):
 
 def general_view(request, name):
     models = {
-        "webring": BlogRollEntry,
+        "blogroll": BlogRollEntry,
         "resume": ResumeEntry,
     }
     try:
@@ -53,7 +53,7 @@ def general_view(request, name):
         template = loader.get_template(f"{name}.html")
         posts = models[name].objects.all() if name != "about" else []
 
-        if name == "webring":
+        if name == "blogroll":
             posts = []
             post_objs = models[name].objects.prefetch_related("topics").all()
             for post in post_objs:

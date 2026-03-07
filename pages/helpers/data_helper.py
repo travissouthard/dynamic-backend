@@ -51,13 +51,13 @@ def create_post(model, item, path):
 
 def import_site_data(json_file, path):
     site_data = json.load(json_file)
-    keys = [("art", Art), ("blog", Blog), ("project", Project), ("resume", ResumeEntry), ("webring", BlogRollEntry)]
+    keys = [("art", Art), ("blog", Blog), ("project", Project), ("resume", ResumeEntry), ("blogroll", BlogRollEntry)]
 
     for key, model in keys:
         for item in site_data[key]:
             if key == "resume":
                 create_resume_entry(model, item)
-            elif key == "webring":
+            elif key == "blogroll":
                 create_blogroll_entry(model, item)
             else:
                 try:
