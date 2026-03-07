@@ -9,8 +9,8 @@ from backend.settings import MEDIA_URL
 from .models import Art, Blog, Project, BlogRollEntry, ResumeEntry
 
 CONTEXT = {
-    "name": "Recent Work",
-    "desc": "Travis Southard's most recent work",
+    "name": "Home",
+    "desc": "Travis Southard's homepage",
     "image": "/blog/travis-flowers.jpg",
     "image_type": "jpg",
     "width": "600",
