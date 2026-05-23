@@ -3,49 +3,69 @@
 
 {% block content %}
 <main class="home">
-    <a href="/art">
-        <img class="hoverSwitch" id="newspaper" src="{% static '/images/site/newspaper-close.gif' %}"
-            alt="A placeholder, please have edited this by publish">
-    </a>
-    <a href="/blog">
-        <img class="hoverSwitch" id="pictures" src="{% static '/images/site/pictures-close.gif' %}"
-            alt="A placeholder, please have edited this by publish">
-    </a>
-    <a href="/project">
-        <img class="hoverSwitch" id="tv" src="{% static '/images/site/tv-close.gif' %}"
-            alt="A placeholder, please have edited this by publish">
-    </a>
-    <a href="/about">
-        <img class="hoverSwitch" id="map" src="{% static '/images/site/map-close.gif' %}"
-            alt="A placeholder, please have edited this by publish">
-    </a>
-    <a href="/blogroll">
-        <img class="hoverSwitch" id="book" src="{% static '/images/site/book-close.gif' %}"
-            alt="A placeholder, please have edited this by publish">
-    </a>
-    <a href="/resume">
-        <img class="hoverSwitch" id="filing" src="{% static '/images/site/filing-close.gif' %}"
-            alt="A placeholder, please have edited this by publish">
-    </a>
-    <script>
-        let getRandomNum = () => {
-            return Math.floor(Math.random() * 10000)
-        }
+    <div class="blur-applier">
+        <a href="/blog">
+            <figure>
+                <img class="hoverSwitch" id="newspaper" src="{% static '/images/site/newspaper-close.gif' %}"
+                    alt="A pixel-art sticker of a newspaper that opens when you hover over it.">
+                <figcaption>Blog</figcaption>
+            </figure>
+        </a>
+        <a href="/art">
+            <figure>
+                <img class="hoverSwitch" id="pictures" src="{% static '/images/site/pictures-close.gif' %}"
+                    alt="A pixel-art sticker of a shoebox of pictures that opens when you hover over it.">
+                <figcaption>Art</figcaption>
+            </figure>
+        </a>
+        <a href="/project">
+            <figure>
+                <img class="hoverSwitch" id="tv" src="{% static '/images/site/tv-close.gif' %}"
+                    alt="A pixel-art sticker of a TV and VCR combo that turns on when you hover over it.">
+                <figcaption>Projects</figcaption>
+            </figure>
+        </a>
+        <a href="/resume">
+            <figure>
+                <img class="hoverSwitch" id="map" src="{% static '/images/site/map-close.gif' %}"
+                    alt="A pixel-art sticker of a map that opens when you hover over it.">
+                <figcaption>Resume</figcaption>
+            </figure>
+        </a>
+        <a href="/about">
+            <figure>
+                <img class="hoverSwitch" id="book" src="{% static '/images/site/book-close.gif' %}"
+                    alt="A pixel-art sticker of a book that opens when you hover over it.">
+                <figcaption>About</figcaption>
+            </figure>
+        </a>
+        <a href="/blogroll">
+            <figure>
+                <img class="hoverSwitch" id="filing" src="{% static '/images/site/filing-close.gif' %}"
+                    alt="A pixel-art sticker of a filing cabinet that opens its top drawer when you hover over it.">
+                <figcaption>Who I follow</figcaption>
+            </figure>
+        </a>
+        <script>
+            let getRandomNum = () => {
+                return Math.floor(Math.random() * 10000)
+            }
 
-        let switchImage = (el, direction) => {
-            let elName =  el.getAttribute("id")
-            let imgPath = el.getAttribute("src").split(elName)[0]
+            let switchImage = (el, direction) => {
+                let elName =  el.getAttribute("id")
+                let imgPath = el.getAttribute("src").split(elName)[0]
 
-            let newImgSrc = `${imgPath}${elName}-${direction}.gif?a=${getRandomNum()}`
-            el.setAttribute("src", newImgSrc)
-        }
-        let switchables = document.getElementsByClassName("hoverSwitch")
+                let newImgSrc = `${imgPath}${elName}-${direction}.gif?a=${getRandomNum()}`
+                el.setAttribute("src", newImgSrc)
+            }
+            let switchables = document.getElementsByClassName("hoverSwitch")
 
-        for (let switchable of switchables) {
-            switchable.addEventListener("mouseover", () => switchImage(switchable, "open"))
-            switchable.addEventListener("mouseout", () => switchImage(switchable, "close"))
-        }
-    </script>
-    {% include "h-card.html" %}
+            for (let switchable of switchables) {
+                switchable.addEventListener("mouseover", () => switchImage(switchable, "open"))
+                switchable.addEventListener("mouseout", () => switchImage(switchable, "close"))
+            }
+        </script>
+        {% include "h-card.html" %}
+    </div>
 </main>
 {% endblock content %}

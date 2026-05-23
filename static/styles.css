@@ -343,28 +343,55 @@ article.project-card:first-of-type {
 }
 
 main.home {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 16px;
     background-image: url(/static/images/site/bg-tile.png);
 
+    div.blur-applier {
+        display: flex;
+        box-sizing: border-box;
+        height: 100vh;
+        padding: 16px;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        backdrop-filter: blur(4px);
+    }
 
     a {
-        max-width: 300px;
+        width: 100%;
+        padding: auto;
+
+        figcaption {
+            opacity: 0;
+            font-size: 2em;
+            text-align: center;
+        }
+    }
+
+    a:hover {
+        background-image: radial-gradient(closest-side, var(--yellow), rgba(0, 0, 0, 0));
+        text-decoration: none;
+
+        figcaption {
+            opacity: 1;
+            background-color: var(--dark-blue);
+            text-decoration: none;
+            border-radius: 4px;
+        }
     }
 
     img {
         width:100%;
-        max-width: 300px;
     }
 
-    .h-card img {
-        display: inline-block;
-        width: 80%;
-        margin: 0 auto;
-    }
+    .h-card {
+        border-radius: 16px;
+
+        img {
+            display: inline-block;
+            width: 80%;
+            margin: 0 auto;
+        }   
+    } 
 }
 
 #about {
@@ -393,13 +420,23 @@ main.home {
 }
 
 @media (min-width: 600px) {
-    body {
-        /* flex-flow: row nowrap; */
+    nav {
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+
+        ul {
+            height: 100%;
+            flex-flow: row nowrap;
+            align-items: baseline;
+        }
     }
 
-    nav {
-        flex-flow: column nowrap;
-        justify-content: flex-start;
+    main.home {
+        div.blur-applier {
+            a {
+                width: 40vw;
+            }
+        }
     }
 
     .list-view {
@@ -440,6 +477,14 @@ main.home {
 
     .blogroll {
         max-width: 250px;
+    }
+
+    main.home {
+        div.blur-applier {
+            a {
+                width: 30vw;
+            }
+        }
     }
 }
 
