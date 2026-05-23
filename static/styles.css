@@ -8,22 +8,22 @@
 }
 
 :root {
-    --black: #1E1818;
-    --dark-gray: #534C56;
-    --gray: #97978E;
-    --white: #F2F2F2;
-    --dark-red: #7D3B55;
-    --red: #B14852;
-    --pink: #D4A09D;
-    --orange: #BE8162;
-    --yellow: #E1BE88;
-    --green: #568F73;
-    --light-green: #97B668;
-    --dark-blue: #3F355B;
-    --blue: #416F8A;
-    --light-blue: #7EC0C2;
-    --brown: #543734;
-    --light-brown: #685D45;
+    --black: #120e1f;
+    --gray: #9e8f84;
+    --white: #ffface;
+    --dark-red: #6a2435;
+    --red: #ab3229;
+    --pink: #f68b69;
+    --orange: #d7793f;
+    --yellow: #fff169;
+    --green: #62ab46;
+    --dark-green: #284646;
+    --dark-blue: #312139;
+    --blue: #525b80;
+    --light-blue: #9dc1c0;
+    --dark-brown: #654147;
+    --brown: #95533d;
+    --light-brown: #e0b56d;
 }
 
 html {
@@ -53,7 +53,7 @@ main {
 
     h2 {
         font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
-        background-color: var(--light-blue);
+        background-color: var(--dark-blue);
         color: var(--white);
     }
 }
@@ -125,7 +125,7 @@ nav {
         display: flex;
         flex-flow: column nowrap;
         justify-content: space-between;
-        margin-bottom: 8px;
+        margin: 8px 16px;
     }
 
     section {
@@ -135,6 +135,10 @@ nav {
     a:hover {
         text-decoration: none;
         font-family: 'kghappy-full', Arial, Helvetica, sans-serif;
+    }
+
+    .h-card {
+        display: none;
     }
 }
 
