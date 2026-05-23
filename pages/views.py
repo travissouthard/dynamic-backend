@@ -44,9 +44,7 @@ def general_view(request, name):
     try:
         if name == "index":
             return HttpResponseRedirect("/")
-        if name == "full-feed":
-            return home_view(request, is_full=True)
-        if name in ["art", "blog", "project"]:
+        if name in ["art", "blog", "project", "full-feed"]:
             return list_view(request, name)
         if name == "projects":
             return HttpResponseRedirect("/project")
@@ -72,14 +70,10 @@ def general_view(request, name):
     except Exception as e:
         return four_oh_four(request, e)
 
-def home_view(request, is_full=False):
+def home_view(request):
     template = loader.get_template("home.html")
 
-    posts = Art.objects.all().union(Blog.objects.all(), Project.objects.all()).order_by("-published")
-
     context = CONTEXT.copy()
-    context["post_list"] = posts
-    context["is_full"] = is_full
 
     return HttpResponse(template.render(context, request))
 
@@ -91,7 +85,13 @@ def list_view(request, name):
             "project": Project,
         }
         template = loader.get_template("list-main.html")
-        posts = models[name].objects.all().order_by("-published")
+        if name == "full-feed":
+            name = "H-Feed for Microformats2"
+            posts = Art.objects.all().union(Blog.objects.all(), Project.objects.all()).order_by("-published")
+        elif name in models.keys():
+            posts = models[name].objects.all().order_by("-published")
+        else:
+            raise Exception(f"{name} not in options: ['art', 'blog', 'projects', 'full-feed']")
 
         context = CONTEXT.copy()
         context["name"] = _capitalize(name)
@@ -99,7 +99,7 @@ def list_view(request, name):
         context["desc"] = f"{name} by Travis Southard"
         return HttpResponse(template.render(context, request))
     except Exception as e:
-        return HttpResponse(content={e})
+        four_oh_four(request, e)
 
 def post_view(request, post_type, slug):
     try:
