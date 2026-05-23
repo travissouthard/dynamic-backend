@@ -73,14 +73,13 @@ def general_view(request, name):
         return four_oh_four(request, e)
 
 def home_view(request, is_full=False):
-    template = loader.get_template("list-main.html")
+    template = loader.get_template("home.html")
 
     posts = Art.objects.all().union(Blog.objects.all(), Project.objects.all()).order_by("-published")
 
     context = CONTEXT.copy()
     context["post_list"] = posts
     context["is_full"] = is_full
-    context["desc"] = "Travis Southard is a queer Philadelphian developer and artist."
 
     return HttpResponse(template.render(context, request))
 

@@ -8,10 +8,22 @@
 }
 
 :root {
-    --red: #852320;
-    --light-red: #D4534E;
-    --light-blue: #3B92D9;
-    --blue: #215D8F;
+    --black: #1E1818;
+    --dark-gray: #534C56;
+    --gray: #97978E;
+    --white: #F2F2F2;
+    --dark-red: #7D3B55;
+    --red: #B14852;
+    --pink: #D4A09D;
+    --orange: #BE8162;
+    --yellow: #E1BE88;
+    --green: #568F73;
+    --light-green: #97B668;
+    --dark-blue: #3F355B;
+    --blue: #416F8A;
+    --light-blue: #7EC0C2;
+    --brown: #543734;
+    --light-brown: #685D45;
 }
 
 html {
@@ -21,12 +33,13 @@ html {
 body {
     display: flex;
     flex-flow: column nowrap;
-    background-color: white;
+    background-color: var(--white);
     font-family: Arial, Helvetica, sans-serif;
     margin: 0 auto;
 }
 
 main {
+    box-sizing: border-box;
     padding: 0;
     min-height: 100vh;
     width: 100%;
@@ -42,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
 main h2 {
     font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
     background-color: var(--light-blue);
-    color: white;
+    color: var(--white);
 }
 
 img {
@@ -61,7 +74,7 @@ li {
 }
 
 a {
-    color: white;
+    color: var(--white);
     text-decoration: none;
 }
 
@@ -83,11 +96,11 @@ article a:hover {
 }
 
 article a h3 {
-    color: black;
+    color: var(--black);
 }
 
 article a h3:hover {
-    color: black;
+    color: var(--black);
     text-decoration: none;
     font-family: 'kghappy-full', Arial, Helvetica, sans-serif;
 }
@@ -101,7 +114,7 @@ article p a:hover {
 nav {
     font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
     background-color: var(--blue);
-    color: white;
+    color: var(--white);
     display: flex;
     flex-flow: row-reverse nowrap;
     justify-content: space-between;
@@ -136,7 +149,7 @@ pre {
 }
 
 code {
-    color: var(--red)
+    color: var(--light-red)
 }
 
 summary {
@@ -188,7 +201,7 @@ summary {
 }
 
 .blog-nav a {
-    color: black;
+    color: var(--black);
     width: 25%;
 }
 
@@ -223,7 +236,7 @@ summary {
 
 .project-card p {
     margin: 8px 0 0 0;
-    color: black;
+    color: var(--black);
     text-align: justify;
 }
 
@@ -278,7 +291,7 @@ article.project-card:first-of-type {
 }
 
 .topic {
-    color: white;
+    color: var(--white);
     background-color: var(--light-blue);
     padding: 4px;
     border-radius: 4px;
@@ -290,8 +303,22 @@ article.project-card:first-of-type {
     flex-flow: column wrap;
     align-items: end;
     align-self: end;
+    background-color: var(--white);
+    color: var(--black);
     text-align: right;
     padding: 8px;
+}
+
+.h-card a {
+    color: var(--black);
+}
+
+.h-card a:hover {
+    color: var(--black);
+}
+
+.h-card a:visited {
+    color: var(--black);
 }
 
 .h-card img {
@@ -313,6 +340,30 @@ article.project-card:first-of-type {
     font-size: 1.5em;
 }
 
+main.home {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 16px;
+    background-image: url(/static/images/site/bg-tile.png);
+}
+
+main.home a {
+    max-width: 300px;
+}
+
+main.home img {
+    width:100%;
+    max-width: 300px;
+}
+
+main.home .h-card img {
+    display: inline-block;
+    width: 80%;
+    margin: 0 auto;
+}
+
 #about {
     max-width: 632px;
     margin: 0 auto;
@@ -329,7 +380,7 @@ article.project-card:first-of-type {
 
 #print-resume {
     font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
-    color: black;
+    color: var(--black);
     text-align: center;
     width: 100%;
 }
@@ -340,7 +391,7 @@ article.project-card:first-of-type {
 
 @media (min-width: 600px) {
     body {
-        flex-flow: row nowrap;
+        /* flex-flow: row nowrap; */
     }
 
     nav {
