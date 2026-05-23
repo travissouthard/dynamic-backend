@@ -38,13 +38,6 @@ body {
     margin: 0 auto;
 }
 
-main {
-    box-sizing: border-box;
-    padding: 0;
-    min-height: 100vh;
-    width: 100%;
-}
-
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
     margin: 0;
@@ -52,10 +45,17 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
-main h2 {
-    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
-    background-color: var(--light-blue);
-    color: var(--white);
+main {
+    box-sizing: border-box;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+
+    h2 {
+        font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+        background-color: var(--light-blue);
+        color: var(--white);
+    }
 }
 
 img {
@@ -85,30 +85,32 @@ a:hover {
 article {
     text-align: justify;
     padding: 20px 10px;
-}
 
-article a {
-    color: var(--blue);
-}
+    a {
+        color: var(--blue);
 
-article a:hover {
-    text-decoration: none;
-}
+        h3 {
+            color: var(--black);
+        }
 
-article a h3 {
-    color: var(--black);
-}
+        h3:hover {
+            color: var(--black);
+            text-decoration: none;
+            font-family: 'kghappy-full', Arial, Helvetica, sans-serif;
+        }
+    }
 
-article a h3:hover {
-    color: var(--black);
-    text-decoration: none;
-    font-family: 'kghappy-full', Arial, Helvetica, sans-serif;
-}
+    a:hover {
+        text-decoration: none;
+    }
 
-article p a:hover {
-    color: var(--blue);
-    text-decoration: underline;
-    font-family: Arial, Helvetica, sans-serif;
+    p {
+        a:hover {
+            color: var(--blue);
+            text-decoration: underline;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    }
 }
 
 nav {
@@ -118,22 +120,22 @@ nav {
     display: flex;
     flex-flow: row-reverse nowrap;
     justify-content: space-between;
-}
 
-nav ul {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    margin-bottom: 8px;
-}
+    ul {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
 
-nav section {
-   align-self: end;
-}
+    section {
+        align-self: end;
+    }
 
-nav a:hover {
-    text-decoration: none;
-    font-family: 'kghappy-full', Arial, Helvetica, sans-serif;
+    a:hover {
+        text-decoration: none;
+        font-family: 'kghappy-full', Arial, Helvetica, sans-serif;
+    }
 }
 
 blockquote, details p {
@@ -180,44 +182,44 @@ summary {
 
 .blog-post {
     padding: 0;
-}
 
-.blog-post h3 {
-    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
-}
+    h3 {
+        font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+    }
 
-.blog-post img {
-    width: 100%;
-}
+    img {
+        width: 100%;
+    }
 
-.blog-post li {
-    list-style: disc;
-    margin-left: 1em;
-}
+    li {
+        list-style: disc;
+        margin-left: 1em;
+    }
+} 
 
 .blog-nav {
     display: flex;
     flex-flow: row nowrap;
-}
 
-.blog-nav a {
-    color: var(--black);
-    width: 25%;
-}
+    a {
+        color: var(--black);
+        width: 25%;
+    }
 
-.blog-nav a:hover {
-    text-decoration: none;
-}
+    a:hover {
+        text-decoration: none;
+    }
 
-.blog-nav li {
-    text-align: center;
-    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
-    font-size: 32px;
-    width: 25%;
-}
+    li {
+        text-align: center;
+        font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+        font-size: 32px;
+        width: 25%;
+    }
 
-.blog-nav li:hover {
-    font-family: 'kghappy-full', Arial, Helvetica, sans-serif;
+    li:hover {
+        font-family: 'kghappy-full', Arial, Helvetica, sans-serif;
+    }
 }
 
 .image-desc {
@@ -227,24 +229,24 @@ summary {
 .project-card {
     padding: 2.5%;
     width: 95%;
-}
 
-.project-card h3 {
-    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
-    height: 60px;
-}
+    h3 {
+        font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+        height: 60px;
+    }
 
-.project-card p {
-    margin: 8px 0 0 0;
-    color: var(--black);
-    text-align: justify;
-}
+    p {
+        margin: 8px 0 0 0;
+        color: var(--black);
+        text-align: justify;
+    }
 
-.project-card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    object-position: top;
+    img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        object-position: top;
+    }
 }
 
 article.project-card:first-of-type {
@@ -254,16 +256,16 @@ article.project-card:first-of-type {
 .resume-card {
     width: 95%;
     padding: 0 8px;
-}
 
-.resume-card h3 {
-    font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
-    text-align: left;
-}
+    h3 {
+        font-family: 'kghappy-solid', Arial, Helvetica, sans-serif;
+        text-align: left;
+    }
 
-.resume-card p {
-    margin: 0;
-    padding: 8px 8px 8px 32px;
+    p {
+        margin: 0;
+        padding: 8px 8px 8px 32px;
+    }
 }
 
 .skills {
@@ -271,11 +273,11 @@ article.project-card:first-of-type {
     flex-flow: row wrap;
     justify-content: space-evenly;
     padding-bottom: 8px;
-}
 
-.skills h3 {
-    text-align: left;
-}
+    h3 {
+        text-align: left;
+    }
+} 
 
 .blogroll {
     border: 1px solid var(--blue);
@@ -284,10 +286,10 @@ article.project-card:first-of-type {
     padding: 4px;
     text-align: left;
     flex-grow: 1;
-}
 
-.blogroll p {
-    text-align: center;
+    p {
+        text-align: center;
+    }
 }
 
 .topic {
@@ -307,37 +309,37 @@ article.project-card:first-of-type {
     color: var(--black);
     text-align: right;
     padding: 8px;
-}
 
-.h-card a {
-    color: var(--black);
-}
+    a {
+        color: var(--black);
+    }
 
-.h-card a:hover {
-    color: var(--black);
-}
+    a:hover {
+        color: var(--black);
+    }
 
-.h-card a:visited {
-    color: var(--black);
-}
+    a:visited {
+        color: var(--black);
+    }
 
-.h-card img {
-    width: 100%;
-    max-width: 200px;
-    max-height: 200px;
-}
+    img {
+        width: 100%;
+        max-width: 200px;
+        max-height: 200px;
+    }
 
-.h-card p {
-    margin: 0;
-}
+    p {
+        margin: 0;
+    }
 
-.h-card p.location {
-    font-size: .75em;
-}
+    p.location {
+        font-size: .75em;
+    }
 
-.h-card .p-name {
-    font-family: 'kghappy-full', Arial, Helvetica, sans-serif;
-    font-size: 1.5em;
+    .p-name {
+        font-family: 'kghappy-full', Arial, Helvetica, sans-serif;
+        font-size: 1.5em;
+    }
 }
 
 main.home {
@@ -347,31 +349,32 @@ main.home {
     align-items: baseline;
     padding: 16px;
     background-image: url(/static/images/site/bg-tile.png);
-}
 
-main.home a {
-    max-width: 300px;
-}
 
-main.home img {
-    width:100%;
-    max-width: 300px;
-}
+    a {
+        max-width: 300px;
+    }
 
-main.home .h-card img {
-    display: inline-block;
-    width: 80%;
-    margin: 0 auto;
+    img {
+        width:100%;
+        max-width: 300px;
+    }
+
+    .h-card img {
+        display: inline-block;
+        width: 80%;
+        margin: 0 auto;
+    }
 }
 
 #about {
     max-width: 632px;
     margin: 0 auto;
     padding: 16px;
-}
 
-#about ul li {
-    padding-left: 2em;
+    ul li {
+        padding-left: 2em;
+    }
 }
 
 #resume {
@@ -399,22 +402,24 @@ main.home .h-card img {
         justify-content: flex-start;
     }
 
-    .list-view .project-card {
-        width: 45%;
-    }
+    .list-view {
+        .project-card {
+            width: 45%;
+        }
 
-    .list-view article.project-card:first-of-type {
-        position: relative;
-        width: 95%;
-    }
+        article.project-card:first-of-type {
+            position: relative;
+            width: 95%;
 
-    .list-view article.project-card:first-of-type a.u-url {
-        float: left;
-    }
+            a.u-url {
+                float: left;
+            }
 
-    .list-view article.project-card:first-of-type p {
-        margin-top: 68px;
-        padding-top: 8px;
+            p {
+                margin-top: 68px;
+                padding-top: 8px;
+            }
+        }
     }
 
     .h-card {
@@ -423,8 +428,10 @@ main.home .h-card img {
 }
 
 @media (min-width: 1000px) {
-    .list-view .project-card {
-        width: 28.33333%;
+    .list-view {
+        .project-card {
+            width: 28.33333%;
+        }
     }
 
     .resume-card {
@@ -437,7 +444,9 @@ main.home .h-card img {
 }
 
 @media (min-width: 1400px) {
-    .list-view .project-card {
-        width: 20%;
+    .list-view {
+        .project-card {
+            width: 20%;
+        }
     }
 }
