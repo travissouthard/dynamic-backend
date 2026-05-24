@@ -25,6 +25,7 @@ urlpatterns = [
     path("<str:route>.html", redirect_old_html_links, name="html_links"),
     path("", home_view, name="home"),
     re_path(r"^rss(.xml)?$", RSSFeed(), name="rss"),
+    path("feed", RSSFeed(), name="rss-wp"),
     path("<str:post_type>/<str:slug>", post_view, name="post"),
     path("<str:name>", general_view, name="general"),
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
