@@ -1,3 +1,4 @@
+import json
 from django.core.management.base import BaseCommand
 from pages.helpers.data_helper import import_site_data
 
@@ -15,6 +16,7 @@ class Command(BaseCommand):
         try:
             file_path = options["json_file"]
             with open(file_path, "r") as f:
-                import_site_data(f, file_path)
+                site_data = json.load(f)
+                import_site_data(site_data, file_path)
         except Exception as e:
             self.stdout.write(e)
