@@ -27,7 +27,7 @@ class Post(models.Model):
         if isNew:
             slug = create_post_slug(self.title)
             self.slug = slug
-        post_to_mastodon(self, isNew)
+            post_to_mastodon(self, isNew)
         super(Post, self).save(*args, **kwargs)
 
 class Art(Post):
