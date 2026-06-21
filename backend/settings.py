@@ -28,7 +28,7 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 DEBUG = True
 
 ALLOWED_HOSTS = ["travissouthard.nfshost.com", "travissouthard.com", "www.travissouthard.com", "localhost", "127.0.0.1"]
-
+CSRF_TRUSTED_ORIGINS = ['https://travissouthard.com', 'https://www.travissouthard.com']
 
 # Application definition
 
