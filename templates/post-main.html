@@ -7,19 +7,33 @@
     <div class="detail-view">
         {% include "blog-nav.html" %}
         <article class="e-content blog-post">
-            <h5><span class="dt-updated">First published: {{post.published}}</span> | <a class="u-url u-uid"
+            <h5>
+                <a rel="author" class="p-author" href="https://travissouthard.com" style="display: hidden;">Travis
+                    Southard</a> | Published: <time class="dt-updated" datetime="{{pub_date}}">{{post.published}}</time>
+                | <a class="u-url u-uid"
                     href="https://travissouthard.com/{{ post.post_type }}/{{ post.slug }}">Permalink</a> | <a
-                    href="https://travissouthard.com/rss.xml" target="_blank">RSS</a></h5>
-            {% if post.image is not None %}
-            <img class="u-photo" src="{{ media_url }}{{ post.image }}" alt="{{ post.alt_text }}">
-            <p class="image-desc"><em>{{ post.alt_text }}</em></p>
+                    href="https://travissouthard.com/rss" target="_blank">RSS
+                </a>
+            </h5>
+            {% if post.image %}
+            <figure>
+                <img class="u-photo" src="{{ media_url }}{{ post.image }}" alt="{{ post.alt_text }}">
+                <figcaption class="image-desc"><em>{{ post.alt_text }}</em></figcaption>
+            </figure>
             {% endif %}
             {{ post.description|safe }}
+            {% if post.mastodon_link %}
             <p>
-                <em>
-                    Thank you for reading!
-                </em>
+                View on <a rel="syndication" class="u-syndication" href="{{ post.mastodon_link }}"
+                    target="_blank">Mastodon</a>
             </p>
+            {% endif %}
+            {% if post.bluesky_link %}
+            <p>
+                View on <a rel="syndication" class="u-syndication" href="{{ post.bluesky_link }}"
+                    target="_blank">Bluesky</a>
+            </p>
+            {% endif %}
         </article>
         {% include "blog-nav.html" %}
     </div>

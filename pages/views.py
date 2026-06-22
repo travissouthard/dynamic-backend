@@ -124,6 +124,7 @@ def post_view(request, post_type, slug):
         context["name"] = post.title
         context["post"] = post
         context["desc"] = post.description
+        context["pub_date"] = f"{post.published.isoformat()} 00:00:00"
         context["first_slug"] = slugs[0]
         context["prev_slug"] = prev_slug
         context["next_slug"] = next_slug
