@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if post_type != "blog" %}
 {% include "navbar.html" %}
-<main class="h-feed">
+{% endif %}
+<main class="h-feed {{ post_type }}">
     <h2 class="p-name">{{ name }}</h2>
+    {% if post_type == "blog" %}
+    {% include "navbar.html" %}
+    {% endif %}
     <a class="u-url u-uid" rel="alternate" type="application/mf2+html" href="http://travissouthard.com/full-feed"></a>
     {% if is_full == True %}
     <div class="list-full">
@@ -11,16 +16,20 @@
         <div class="list-view">
             {% endif %}
             {% for post in post_list %}
-            <article class="h-entry project-card">
+            <article class="h-entry {{post_type}}-card">
                 <a class="u-url" href="/{{ post.post_type }}/{{ post.slug }}">
                     <h3 class="p-name">{{ post.title }}</h3>
-                    <img src="{{ media_url }}{{ post.image|default:'images/art/headshot-32.png' }}"
-                        alt="{{post.alt_text|default:'A pixel art portrait of Travis'}}">
+                    {% if post.image %}
+                    <figure>
+                        <img class="u-photo" src="{{ media_url }}{{ post.image }}" alt="{{ post.alt_text }}">
+                        <figcaption class="image-desc"><em>{{ post.alt_text }}</em></figcaption>
+                    </figure>
+                    {% endif %}
                 </a>
                 {% if is_full == True %}
                 <div class="p-summary e-content">{{ post.description|safe }}</div>
                 {% else %}
-                <p class="p-summary">{{ post.description|striptags|truncatechars:100 }} <a
+                <p class="p-summary">{{ post.description|striptags|truncatechars:500 }} <a
                         href='/{{ post.post_type }}/{{ post.slug }}'>Read more</a>
                 </p>
                 {% endif %}

@@ -95,6 +95,7 @@ def list_view(request, name):
 
         context = CONTEXT.copy()
         context["name"] = _capitalize(name)
+        context["post_type"] = name
         context["post_list"] = posts
         context["desc"] = f"{name} by Travis Southard"
         return HttpResponse(template.render(context, request))
@@ -122,6 +123,7 @@ def post_view(request, post_type, slug):
 
         context = CONTEXT.copy()
         context["name"] = post.title
+        context["post_type"] = post_type
         context["post"] = post
         context["desc"] = post.description
         context["pub_date"] = f"{post.published.isoformat()} 00:00:00"

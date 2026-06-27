@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if post_type != "blog" %}
 {% include "navbar.html" %}
-<main class="h-entry">
+{% endif %}
+<main class="h-entry {{ post_type }}">
     <h2 class="p-name">{{ post.title }}</h2>
     <div class="detail-view">
-        {% include "blog-nav.html" %}
+        {% if post_type == "blog" %}
+        {% include "navbar.html" %}
+        {% endif %}
         <article class="e-content blog-post">
             <h5>
                 <a rel="author" class="p-author" href="https://travissouthard.com" style="display: hidden;">Travis
